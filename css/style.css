@@ -1,0 +1,235 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(92, 130, 255);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #f6f6f6;
+  }
+  
+h1,h2,h3,h4,h5 {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+p {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+/* Navbar styles */
+.navbar {
+    border-width: 0 3px 2.5px 3px;
+    border-style: solid;
+    border-color: rgb(92, 130, 255);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);    
+}
+/* Navbar links styles */
+.navbar-nav .nav-link {
+    color: rgb(92, 130, 255);
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Navbar links hover animation */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3366ff;
+    transform: translateY(-2px);
+    position: relative;
+    }
+    
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #3366ff;
+    transition: width 0.3s ease;
+}
+    
+.navbar-nav .nav-link:hover::after {
+    width: 50%;    
+}
+.principal{
+    height: 80vh;
+}
+
+.bg-inicial {
+    background-image: url('../img/principal_mujercomputadora.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dropdown animation */
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(92, 130, 255, 0.1);
+    color: #3366ff;
+}
+
+
+/* Estilos para los controles de prev y next del Owl Carousel */
+.owl-nav button {
+    position: absolute;
+    width: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(92, 130, 255, 0.7) !important; /* Color de fondo con opacidad */
+    color: white !important; /* Color del icono */
+    font-size: 24px !important; /* Tamaño del icono */
+    padding: 10px 15px !important; /* Espaciado interno del botón */
+    border-radius: 50% !important; /* Forma circular */
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
+}
+
+/* Posicionamiento del botón prev */
+.owl-nav button.owl-prev {
+    left: 10px;
+}
+
+/* Posicionamiento del botón next */
+.owl-nav button.owl-next {
+    right: 10px;
+}
+
+/* Efecto hover para los botones de navegación */
+.owl-nav button:hover {
+    background-color: rgb(92, 130, 255) !important; /* Color sólido en hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra en hover */
+}
+
+/* Estilos para los dots (indicadores) del Owl Carousel */
+.owl-dots {
+    text-align: center;
+    margin-top: 20px; /* Espacio superior */
+}
+
+.owl-dots .owl-dot {
+    display: inline-block;
+    margin: 0 5px; /* Espacio entre dots */
+}
+
+.owl-dots .owl-dot span {
+    width: 10px;
+    height: 10px;
+    background-color: #cc1818; /* Color de fondo para dots inactivos */
+    border-radius: 50%;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el dot activo */
+.owl-dots .owl-dot.active span {
+    background-color: rgb(92, 130, 255); /* Color para el dot activo */
+    width: 14px; /* Ligeramente más grande */
+    height: 14px;
+}
+
+/* Efecto hover para los dots */
+.owl-dots .owl-dot:hover span {
+    background-color: rgb(92, 130, 255, 0.7); /* Color semi-transparente en hover */
+}
+
+/* Estilos para los tabs */
+.nav-tabs .nav-item .nav-link {
+    background-color: rgb(255, 255, 255);
+    color: rgb(37, 14, 78);
+    border: 2px solid rgb(92, 130, 255);
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-item .nav-link:hover {
+    background-color: rgba(92, 130, 255, 0.8);
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #cc1818;
+    border: 2px solid #cc1818;
+    color: white;
+    transform: scale(1.05);
+}
+.tipoCursada {
+    background-color: #3366ff;
+    width: 60%;
+    text-align: center;
+    color: white;
+    border-radius: 20px;    
+}
+.card-title{
+    height: 80px;
+}
+
+.tipoCursada2{
+    background-color: #cc1818;
+    width: 60%;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+}
+
+
+.blur {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+}
+
+
+@media (min-width: 768px) {
+    .principal {
+        height: 90vh;
+        background-image: url(../img/principal_2.jpg);
+    }
+    .bg-inicial {
+        background-position: center;
+    }
+    .navbar-nav .nav-link:hover::after {
+        width: 100%;    
+    }
+}
+
+
+
+

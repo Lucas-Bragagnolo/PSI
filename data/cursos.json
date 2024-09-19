@@ -1,0 +1,21 @@
+
+[
+  {
+    "id": 1,
+    "nombre": "Manejo de la depresión",
+    "descripcion": "Explorá la teoría, los tratamientos y las estrategias de apoyo necesarias para abordar la depresión de manera integral y compasiva.",
+    "precio": 139.99,
+    "imagen": "../img/curso1.png",
+    "tipo": 2,
+    "area": 2
+  },
+  {
+    "id": 2,
+    "nombre": "Tratamiento de trastornos de ansiedad",
+    "descripcion": "Este curso abarca desde la identificación y diagnóstico de diferentes tipos de trastornos de ansiedad hasta las técnicas de intervención más avanzadas.",
+    "precio": 39.99,
+    "imagen": "../img/curso2.jpg",
+    "tipo": 2,
+    "area": 2
+  }
+]
