@@ -17,12 +17,16 @@
 </head>
 <body>
 
-
+    
+        <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank">
+            
+        </a>
+    
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">        
             <a class="navbar-brand" href="#">
-                <img src="../img/psi1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+                <img src="./img/ASOCIACION-PSI-Logos-2.png" alt="Logo" height="80" class="d-inline-block align-text-top">
             </a>                        
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -71,7 +75,7 @@
     <section class="area-psicologia py-5" data-aos="fade-up">
         <div class="container">
             <h2 class="display-4 mb-4 titulo" data-aos="fade-right">Encontrá tu próximo curso</h2>
-            <hr >    
+           
             <h3 data-aos="fade-left">Cursos y Especializaciones</h3>
                 <ul class="nav nav-tabs justify-content-start mb-4" id="cursosTabs" role="tablist" data-aos="fade-up">
                     <li class="nav-item mb-3" role="presentation" >
@@ -83,10 +87,21 @@
                     <li class="nav-item mb-3" role="presentation">
                         <button class="nav-link" id="arte-tab" data-bs-toggle="tab" data-bs-target="#arte" type="button" role="tab" aria-controls="arte" aria-selected="false">Educación</button>
                     </li>
-
-
-
                 </ul>
+                
+                <div class="mb-4" data-aos="fade-up">                    
+                    <div class="btn-group" role="group" aria-label="Filtro de tipo de curso">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">Todos</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio2">Online en Vivo</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio3">On Demand</label>
+                    </div>
+                </div>                
+
                 <div class="tab-content " id="cursosTabsContent" data-aos="fade-up">
                     <div class="tab-pane fade show active" id="psicologia" role="tabpanel" aria-labelledby="psicologia-tab">
 
@@ -222,16 +237,24 @@
 
 
 
-    <section class="promocion bg-light py-5" data-aos="fade-up">
+    <section class="promocion bg-gradient py-5" data-aos="fade-up">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <h2 class="mb-4">¡Oferta Especial!</h2>
-                    <p class="lead mb-4">Compra un curso Online en Vivo y obtén un 10% de descuento en un curso On Demand</p>
-                    <div class="alert alert-info" role="alert">
-                        <i class="fas fa-percentage me-2"></i>Ahorra en tu próximo curso On Demand
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="mb-4 display-4 fw-bold">¡Oferta Especial!</h2>
+                    <p class="lead mb-4">Compra un curso Online en Vivo y obtén un</p>
+                    <div class="discount-badge mb-4">
+                        <span class="display-3 fw-bold">10%</span>
+                        <span class="fs-4">de descuento</span>
                     </div>
-                    <a href="#" class="btn btn-primary btn-lg">Ver Cursos Online en Vivo</a>
+                    <p class="lead mb-4">en un curso On Demand</p>
+                    <div class="alert alert-info d-inline-block mb-4" role="alert">
+                        <i class="fas fa-percentage me-2" aria-hidden="true"></i>Ahorra en tu próximo curso On Demand
+                    </div>
+                    <a href="#cursos-online" class="btn btn-primary btn-lg px-5 py-3 fw-bold" aria-label="Ver Cursos Online en Vivo">
+                        Ver Cursos Online en Vivo
+                        <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -243,7 +266,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <img src="../img/psi1.png" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                    <img src="./img/psi_transparente_blanco.png" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
                     <p>© 2024 PSI. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
@@ -290,7 +313,7 @@
                         items: 2.3
                     },
                     992: {
-                        items: 4.5
+                        items: 3.8
                     }
                 }
             });
@@ -303,5 +326,6 @@
     <script>
         AOS.init();
     </script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
