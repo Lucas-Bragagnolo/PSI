@@ -440,6 +440,10 @@ p {
     font-family: "Font Awesome 5 Brands";
 }
 
+.precio-card {
+    font-size: 35px;
+}
+
 @media (max-width: 768px) {
     .whatsapp-btn {
         width: 50px;
