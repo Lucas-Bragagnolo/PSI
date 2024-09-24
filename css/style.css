@@ -444,6 +444,14 @@ p {
     font-size: 35px;
 }
 
+.coruse-banner{    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 50vh;    
+    color: white;
+}
+
 @media (max-width: 768px) {
     .whatsapp-btn {
         width: 50px;
