@@ -452,6 +452,143 @@ p {
     color: white;
 }
 
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;    
+    border: 2px solid white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    color: #fff;
+}
+
+.btn-2 {
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    color: #007bff
+}
+
+.btn:hover, .btn:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn + .btn {
+    margin-left: 10px;
+}
+
+
+
+.offcanvas-cart {
+    width: 400px;
+    max-width: 100%;
+}
+
+@media (min-width: 576px) {
+    .offcanvas-cart {
+        width: 500px;
+    }
+}
+
+@media (min-width: 992px) {
+    .offcanvas-cart {
+        width: 600px;
+    }
+}
+
+.offcanvas-cart .offcanvas-body {
+    padding: 20px;
+}
+
+.offcanvas-cart .offcanvas-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.offcanvas-cart .cart-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.offcanvas-cart .cart-item:last-child {
+    border-bottom: none;
+}
+
+.offcanvas-cart .cart-total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+.btn-outline-primary{
+    color: #007bff;
+    border: 3px, solid #007bff;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Dark mode styles */
+
+
+@media (max-width: 768px) {
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn + .btn {
+        margin-left: 0;
+    }
+}
+
+/* Accessibility */
+.btn:focus-visible {
+    outline: 3px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+
 @media (max-width: 768px) {
     .whatsapp-btn {
         width: 50px;

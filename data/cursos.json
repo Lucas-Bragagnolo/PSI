@@ -1,21 +1,77 @@
-
-[
-  {
-    "id": 1,
-    "nombre": "Manejo de la depresión",
-    "descripcion": "Explorá la teoría, los tratamientos y las estrategias de apoyo necesarias para abordar la depresión de manera integral y compasiva.",
-    "precio": 139.99,
-    "imagen": "../img/curso1.png",
-    "tipo": 2,
-    "area": 2
-  },
-  {
-    "id": 2,
-    "nombre": "Tratamiento de trastornos de ansiedad",
-    "descripcion": "Este curso abarca desde la identificación y diagnóstico de diferentes tipos de trastornos de ansiedad hasta las técnicas de intervención más avanzadas.",
-    "precio": 39.99,
-    "imagen": "../img/curso2.jpg",
-    "tipo": 2,
-    "area": 2
-  }
+[{
+  "id": "1",
+  "nombre": "Terapia de Parejas",
+  "fechainicio": "2024-10-16",
+  "activo": "1",
+  "precioDolar": "139.00",
+  "imgPortada": "curso1.png",
+  "imgBaner": "detallecurso.png",
+  "duracion": "10 semanas",
+  "clasesSemanales": "2 semanales",
+  "descripcion1": "La terapia de parejas es un tipo de terapia psicológica que se enfoca en mejorar la comunicación, la resolución de conflictos y la resolución de problemas en las relaciones de pareja. La terapia de parejas puede ayudar a las parejas a mejorar su comunicación, a resolver conflictos de manera más efectiva y a mejorar su relación en general.",
+  "descripcion2": "La terapia de parejas puede ayudar a las parejas a mejorar su comunicación.",
+  "modalidad": "Ondemand",
+  "tipocurso": "Curso",
+  "temario": [
+      "Introducción a la terapia de parejas",
+      "Técnicas de comunicación efectiva",
+      "Resolución de conflictos en la pareja"
+    ],
+    "certificaciones": [
+      "Certificado de Participación",
+      "Certificado de Competencia en Terapia de Parejas",
+      "Acreditación Profesional en Consejería Matrimonial"
+    ]
+  
+},
+{
+  "id": "2",
+  "nombre": "Psicología Infantil",
+  "fechainicio": "2024-11-01",
+  "activo": "1",
+  "precioDolar": "129.00",
+  "imgPortada": "curso2.png",
+  "imgBaner": "detallecurso.png",
+  "duracion": "8 Semanas",
+  "clasesSemanales": "2 clases semanales",
+  "descripcion1": "La psicología infantil es una rama de la psicología que se centra en el estudio del desarrollo cognitivo, emocional y social de los niños. Este curso proporciona una comprensión profunda de cómo los niños piensan, aprenden y se comportan en diferentes etapas de su desarrollo.",
+  "descripcion2": "Aprenderás técnicas para evaluar y apoyar el desarrollo saludable de los niños.",
+  "modalidad": "Ondemand",
+  "tipocurso": "Especializacion",
+  "temario": [
+    "Introducción a la terapia de parejas",
+    "Técnicas de comunicación efectiva",
+    "Resolución de conflictos en la pareja"
+  ],
+  "certificaciones": [
+    "Certificado de Participación",
+    "Certificado de Competencia en Terapia de Parejas",
+    "Acreditación Profesional en Consejería Matrimonial"
+  ]
+},
+{
+  "id": "3",
+  "nombre": "Terapia Cognitivo-Conductual",
+  "fechainicio": "2024-12-01",
+  "activo": "1",
+  "precioDolar": "149.00",
+  "imgPortada": "curso3.png",
+  "imgBaner": "detallecurso.png",
+  "duracion": "12 semanas",
+  "clasesSemanales": "2 clases Semanales",
+  "descripcion1": "La Terapia Cognitivo-Conductual (TCC) es un enfoque psicoterapéutico que se centra en cómo los pensamientos, emociones y comportamientos están interconectados. Este curso te enseñará las técnicas fundamentales de la TCC y cómo aplicarlas en la práctica clínica.",
+  "descripcion2": "Aprenderás a ayudar a los pacientes a identificar y cambiar patrones de pensamiento negativos.",
+  "modalidad": "Ondemand",
+  "tipocurso": "Curso",
+  "temario": [
+    "Introducción a la terapia de parejas",
+    "Técnicas de comunicación efectiva",
+    "Resolución de conflictos en la pareja"
+  ],
+  "certificaciones": [
+    "Certificado de Participación",
+    "Certificado de Competencia en Terapia de Parejas",
+    "Acreditación Profesional en Consejería Matrimonial"
+  ]
+}
 ]
