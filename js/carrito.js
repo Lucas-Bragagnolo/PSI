@@ -84,7 +84,7 @@ function eliminarDelCarrito(cursoID) {
 function mostrarCarrito() {
   const contenedorCarrito = document.getElementById('carritoItems');
   contenedorCarrito.innerHTML = '';
-  carrito.forEach(({ imgportada, precio, fechainicio, idcur, nombre}) => {
+  carrito.forEach(({ imgportada, precio, fechainicioletras, idcur, nombre}) => {
     const item = document.createElement('div');
     item.className = 'card mb-3 position-relative';
     item.innerHTML = `
@@ -97,7 +97,7 @@ function mostrarCarrito() {
                     <h2 class="h6">${nombre}</h2>
                     <p class="card-text mb-1">
                         <span class="sr-only">Fecha de inicio:</span>
-                        <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicio}</small>
+                        <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicioletras}</small>
                     </p>                            
                     <p class="card-text mb-0">
                         <span class="sr-only">Precio:</span>
@@ -120,9 +120,67 @@ function mostrarCarrito() {
 // Función para mostrar el total del carrito
 function mostrarTotalCarrito() {
   const totalElement = document.getElementById('total-carrito');
+  const totalResumen = document.getElementById('resumenTotal');
   const total = carrito.reduce((acc, { precio }) => acc + parseFloat(precio), 0);
   totalElement.innerHTML = `<h4>Total: U$D ${total.toFixed(2)}</h4>`;
+  totalResumen.innerHTML = `<h4>Total: U$D ${total.toFixed(2)}</h4>`;
 }
+
+
+// Función para mostrar el resumen del carrito
+function mostrarResumenCarrito() {
+  const resumenCarrito = document.getElementById('resumenCarrito');
+  resumenCarrito.innerHTML = '';
+  
+  carrito.forEach(({ nombre, precio }) => {
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+    li.innerHTML = `
+      ${nombre}
+      <span class="badge bg-primary rounded-pill">U$D ${precio}</span>
+    `;
+    resumenCarrito.appendChild(li);
+  });
+}
+
+// Modificar la función mostrarCarrito para incluir el resumen
+function mostrarCarrito() {
+  const contenedorCarrito = document.getElementById('carritoItems');
+  contenedorCarrito.innerHTML = '';
+  carrito.forEach(({ imgportada, precio, fechainicioletras, idcur, nombre}) => {
+    const item = document.createElement('div');
+    item.className = 'card mb-3 position-relative';
+    item.innerHTML = `
+        <div class="row g-0">
+            <div class="col-3 col-md-3 mt-3">
+                <img src="../img/${imgportada}" class="img-fluid rounded-start" alt="Imagen del curso">
+            </div>
+            <div class="col-7 col-md-7">
+                <div class="card-body">
+                    <h2 class="h6">${nombre}</h2>
+                    <p class="card-text mb-1">
+                        <span class="sr-only">Fecha de inicio:</span>
+                        <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicioletras}</small>
+                    </p>                            
+                    <p class="card-text mb-0">
+                        <span class="sr-only">Precio:</span>
+                        <strong aria-label="${precio} dólares">U$D ${precio}</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="col-2 d-flex align-items-start justify-content-start">
+                <button type="button" class="btn borrar-curso" onclick="eliminarDelCarrito(${idcur})" aria-label="Eliminar curso">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    contenedorCarrito.appendChild(item);
+  });
+  mostrarTotalCarrito();
+  mostrarResumenCarrito();
+}
+
 
 
 // Función para actualizar el badge del carrito

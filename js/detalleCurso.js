@@ -196,72 +196,8 @@ const cargarPlanPorID = async () => {
 
 
 // Función para renderizar los cursos en el Owl Carousel
-const renderizarCursos = () => {
-    const carousel = document.querySelector('.owl-carousel');
-    
-    // Limpiar el carrusel antes de agregar los nuevos ítems para evitar duplicados
-    carousel.innerHTML = '';
-  
-    // Filtrar solo los cursos que sean de tipo "Ondemand"
-    const cursosOndemand = cursos.filter(curso => curso.modalidad === '1');
-    
-    cursosOndemand.forEach(curso => {
-      const item = document.createElement('div');  // Creación del div para el item del curso
-      item.classList.add('item');  // Agregar la clase 'item'
-      item.setAttribute('data-aos', 'zoom-in');  // Añadir atributo para animación
-      let modalidadLetra = '';
-      let estiloModalidad = '';
-      if (curso.modalidad === '2') {
-          modalidadLetra = 'Online en Vivo';
-          estiloModalidad = 'tipoCursada';
-      } else if (curso.modalidad === '1') {
-          modalidadLetra = 'On Demand';
-          estiloModalidad = 'tipoCursada2';
-      } else  {
-          modalidadLetra = 'Presencial';
-      }
-      // HTML que se inserta en el item
-      item.innerHTML = `
-        <div class="card">
-            <img src="../img/${curso.imgportada}" class="card-img-top" alt="${curso.nombre}">
-            <div class="card-body">
-                <p class="${estiloModalidad}"><i class="fa-regular fa-dot"></i> ${modalidadLetra}</p>
-                <p><i class="fa-solid fa-clock me-2"></i> ${curso.duracion2} Semanas / 1 clase Semanal</p>
-                <p><i class="fa-regular fa-calendar me-2"></i> Inicio: ${curso.fechainicio}</p>
-                <p class="card-text overflow-hidden" style="height: 4.5em;">${curso.descripcion2}</p>
-                <h3 class="card-text"><strong>U$D ${curso.precio}</strong></h3>
-                <a href="detalle_curso.html?planID=${curso.idPlan}" class="btn btn-primary">Ver Curso</a>
-            </div>
-        </div>
-      `;
-      
-      carousel.appendChild(item); // Agregar el item al carrusel
-    });
-  
-    // Destruir el carrusel si ya fue inicializado para evitar que se dupliquen los ítems
-    $('.owl-carousel').trigger('destroy.owl.carousel');
-  
-    // Inicializar Owl Carousel nuevamente con los nuevos ítems
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1.3,
-          center: true
-        },
-        600: {
-          items: 3
-        },
-        1000: {
-          items: 4.3
-        }
-      }
-    });
-  };
-  
+
   // Llamar a la función para cargar los cursos
-  cargarCursos();
+cargarCursos();
 // Llamar a la función para cargar el curso al abrir la página
 cargarPlanPorID();
