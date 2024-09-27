@@ -47,6 +47,7 @@ const renderizarCursos = async () => {
     }
     // HTML que se inserta en el item
     item.innerHTML = `
+    <a href="./detalle_curso.html?planID=${curso.idPlan}" class="text-decoration-none">
       <div class="card">
           <img src="../img/${curso.imgportada}" class="card-img-top" alt="${curso.nombre}">
           <div class="card-body">
@@ -54,10 +55,10 @@ const renderizarCursos = async () => {
               <p><i class="fa-solid fa-clock me-2"></i> ${curso.duracion2} Semanas / 1 clase Semanal</p>
               <p><i class="fa-regular fa-calendar me-2"></i> Inicio: ${curso.fechainicioletras}</p>
               <p class="card-text overflow-hidden" style="height: 4.5em;">${curso.descripcion2}</p>
-              <h3 class="card-text"><strong>U$D ${curso.precio}</strong></h3>
-              <a href="detalle_curso.html?planID=${curso.idPlan}" class="btn btn-primary">Ver Curso</a>
+              <h3 class="card-text"><strong>U$D ${curso.precio}</strong></h3>              
           </div>
       </div>
+      </a>
     `;
     
     carousel.appendChild(item); // Agregar el item al carrusel
