@@ -1,7 +1,7 @@
 function mostrarResumenCarrito() {
     const resumenCarrito = document.getElementById('resumenCarrito');
     const totalResumen = document.getElementById('resumenTotal');
-    
+    const promocionCard = document.getElementById('promocionCard');
     if (!resumenCarrito || !totalResumen) {
       console.error('No se encontraron los elementos necesarios para mostrar el resumen del carrito');
       return;
@@ -47,6 +47,10 @@ function mostrarResumenCarrito() {
       `;
       resumenCarrito.appendChild(li);
     });
+
+    if(carrito.length === 1) {
+      promocionCard.classList.remove('d-none');
+    }
   
     if (descuento > 0) {
       const descuentoLi = document.createElement('li');
@@ -62,3 +66,42 @@ function mostrarResumenCarrito() {
   }
 
   mostrarResumenCarrito();
+
+
+// Función para validar el formulario
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('inscripcionForm');
+  var botonPagar = document.getElementById('botonPagar');
+
+  // Verificar si todos los campos del formulario son válidos
+  function todosLosCamposValidos() {
+      return form.checkValidity();
+  }
+
+  // Escuchar el evento de input en cada campo
+  form.querySelectorAll('input, select').forEach(function (input) {
+      input.addEventListener('input', function () {
+          form.classList.add('was-validated'); // Activa la clase de validación en el formulario
+          if (todosLosCamposValidos()) {
+              botonPagar.classList.remove('disabled');
+              botonPagar.removeAttribute('disabled');
+          } else {
+              botonPagar.classList.add('disabled');
+              botonPagar.setAttribute('disabled', true);
+          }
+      });
+  });
+
+  // Manejar el evento de envío del formulario para evitar el envío si no es válido
+  form.addEventListener('submit', function (event) {
+      if (!todosLosCamposValidos()) {
+          event.preventDefault();
+          event.stopPropagation();
+      } else {
+          // Aquí podés manejar la lógica de envío del formulario si es válido
+          alert('Formulario válido. Enviando...');
+      }
+  });
+});
+          
+          

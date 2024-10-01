@@ -73,96 +73,107 @@
 <main>
     <div class="img-banner"></div>
 </main>
-<section class="container my-5">   
-    <div class="row">
-        <div class="col-lg-8">
-            <h1 class="mb-4">Formulario de Inscripción</h1>
-            <form id="inscripcionForm" novalidate>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required aria-describedby="nombreHelp">
-                        <div id="nombreHelp" class="form-text">Ingrese su nombre completo</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" required aria-describedby="apellidoHelp">
-                        <div id="apellidoHelp" class="form-text">Ingrese su apellido completo</div>
-                    </div>
+<section class="container my-5">       
+        <form id="inscripcionForm" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="mb-4">Formulario de Inscripción</h1>           
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" required aria-describedby="nombreHelp">
+                                <div id="nombreHelp" class="form-text">Ingrese su nombre completo</div>
+                                <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                                <div class="invalid-feedback">Campo requerido.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" required aria-describedby="apellidoHelp">
+                                <div id="apellidoHelp" class="form-text">Ingrese su apellido completo</div>
+                                <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                                <div class="invalid-feedback">Campo requerido.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Nunca compartiremos su email con terceros</div>
+                            <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                            <div class="invalid-feedback">Campo requerido. Ingrese un email válido.</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" id="telefono" required pattern="[0-9]{10}" aria-describedby="telefonoHelp">
+                                <div id="telefonoHelp" class="form-text">Ingrese un número de 10 dígitos sin espacios ni guiones</div>
+                                <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                                <div class="invalid-feedback">Ingrese un número de teléfono válido.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="numeroDocumento" class="form-label">Número de Documento</label>
+                                <input type="number" class="form-control" id="numeroDocumento" required aria-describedby="numeroDocumentoHelp">
+                                <div id="numeroDocumentoHelp" class="form-text">Ingrese el número sin puntos ni guiones</div>
+                                <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                                <div class="invalid-feedback">Campo requerido.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pais" class="form-label">País</label>
+                            <select class="form-select" id="pais" required aria-describedby="paisHelp">
+                                <option value="">Seleccione un país</option>
+                                <option value="argentina">Argentina</option>
+                                <option value="brasil">Brasil</option>
+                                <option value="chile">Chile</option>
+                                <option value="colombia">Colombia</option>
+                                <option value="mexico">México</option>
+                                <option value="peru">Perú</option>
+                                <option value="uruguay">Uruguay</option>
+                                <option value="venezuela">Venezuela</option>
+                            </select>
+                            <div id="paisHelp" class="form-text">Seleccione su país de residencia</div>
+                            <div class="valid-feedback"><i class="fas fa-check"></i></div>
+                            <div class="invalid-feedback">Campo requerido.</div>
+                        </div>            
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">Nunca compartiremos su email con terceros</div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="card shadow-sm position-sticky" style="top: 150px;">
+                        <div class="card-body">
+                            <h2 class="card-title h5 mb-4">Resumen del Carrito</h2>
+                            <ul class="list-group list-group-flush mb-3" id="resumenCarrito">
+                                <!-- Los items del carrito se agregarán dinámicamente aquí -->
+                            </ul>
+                            <div class="card mt-3 d-none" id="promocionCard">
+                                <div class="card-body">
+                                    <h5>¡Promoción Especial!</h5>
+                                    <p class="card-text">Si eliges un curso OnDemand más, obtienes un 20% de descuento en ambos.</p>
+                                    <a href="./cursos.html#cursos" class="btn btn-outline-primary btn-sm" >Ver cursos</a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3" id="resumenTotal">
+                                <!-- El total y el descuento se mostrarán aquí -->
+                            </div>
+                            
+        
+                            
+                            <div id="descuentoAplicado" class="text-success mt-2" style="display: none;">
+                                Descuento aplicado: <span id="descuentoPorcentaje"></span>%
+                            </div>
+                                            
+                            
+                            <div class="d-flex justify-content-end align-items-center pt-3" id="resumenTotal">
+                                <!-- El total y el descuento se mostrarán aquí -->
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-3">
+                                <a href="#" id="botonPagar" class="btn btn-primary w-100 disabled" >Pagar</a>
+                                <button type="button"  class="btn btn-outline-primary w-100">Cancelar</button>
+                            </div>
+                        </div>
+        
+                    </div>
+        
                 </div>
-                <div class="mb-3">
-                    <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" required pattern="[0-9]{10}" aria-describedby="telefonoHelp">
-                    <div id="telefonoHelp" class="form-text">Ingrese un número de 10 dígitos sin espacios ni guiones</div>
-                </div>
-                <div class="mb-3">
-                    <label for="pais" class="form-label">País</label>
-                    <select class="form-select" id="pais" required aria-describedby="paisHelp">
-                        <option value="">Seleccione un país</option>
-                        <option value="argentina">Argentina</option>
-                        <option value="brasil">Brasil</option>
-                        <option value="chile">Chile</option>
-                        <option value="colombia">Colombia</option>
-                        <option value="mexico">México</option>
-                        <option value="peru">Perú</option>
-                        <option value="uruguay">Uruguay</option>
-                        <option value="venezuela">Venezuela</option>
-                    </select>
-                    <div id="paisHelp" class="form-text">Seleccione su país de residencia</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
-                        <select class="form-select" id="tipoDocumento" required aria-describedby="tipoDocumentoHelp">
-                            <option value="">Seleccione tipo de documento</option>
-                            <option value="dni">DNI</option>
-                            <option value="pasaporte">Pasaporte</option>
-                            <option value="cedula">Cédula de Identidad</option>
-                        </select>
-                        <div id="tipoDocumentoHelp" class="form-text">Elija el tipo de documento de identidad</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="numeroDocumento" class="form-label">Número de Documento</label>
-                        <input type="text" class="form-control" id="numeroDocumento" required aria-describedby="numeroDocumentoHelp">
-                        <div id="numeroDocumentoHelp" class="form-text">Ingrese el número sin puntos ni guiones</div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="card shadow-sm position-sticky" style="top: 150px;">
-                <div class="card-body">
-                    <h2 class="card-title h5 mb-4">Resumen del Carrito</h2>
-                    <ul class="list-group list-group-flush mb-3" id="resumenCarrito">
-                        <!-- Los items del carrito se agregarán dinámicamente aquí -->
-                    </ul>
-                    
-                    <div class="d-flex justify-content-between align-items-center border-top pt-3" id="resumenTotal">
-                        <!-- El total y el descuento se mostrarán aquí -->
-                    </div>
-                    <div id="descuentoAplicado" class="text-success mt-2" style="display: none;">
-                        Descuento aplicado: <span id="descuentoPorcentaje"></span>%
-                    </div>
-                                    
-                    
-                    <div class="d-flex justify-content-end align-items-center pt-3" id="resumenTotal">
-                        <!-- El total y el descuento se mostrarán aquí -->
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center pt-3">
-                        <a type="button" href="./pago.php" class="btn btn-primary w-100 disabled" form="inscripcionForm">Pagar!</a>
-                        <button type="button"  class="btn btn-outline-primary w-100">Cancelar</button>
-                    </div>
-                </div>
-
             </div>
-
-        </div>
-    </div>
+        </form>    
 </section> 
 
    
@@ -260,7 +271,7 @@
     </script>
 
     <script src="../js/carrito.js"></script>
-    <script src="../js/inscripcion.js"></script>
+    <script src="../js/inscripcion.js?=3"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

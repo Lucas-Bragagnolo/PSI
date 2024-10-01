@@ -1,6 +1,20 @@
 
 renderizarCursos();
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    Swal.fire({
+        title: '¡Oferta Especial!',
+        text: 'Compra 1 Curso Ondemand y 1 Curso Presencial y obtén un 20% de descuento en ambos cursos.',
+        imageUrl: '../img/curso1.png',
+        imageWidth: 400,
+        imageHeight: 400,
+        imageAlt: 'Imagen de bienvenida',
+        confirmButtonText: 'Entendido'
+    });
+});
+
+
 // Función para obtener el valor de un parámetro en la URL
 const obtenerParametroURL = (parametro) => {
     const urlParams = new URLSearchParams(window.location.search);
