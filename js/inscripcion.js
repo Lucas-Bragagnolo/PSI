@@ -57,6 +57,8 @@ function mostrarResumenCarrito() {
       `;
       resumenCarrito.appendChild(descuentoLi);
     }
+    
+
   }
 
   mostrarResumenCarrito();

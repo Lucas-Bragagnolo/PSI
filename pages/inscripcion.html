@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?=1.2">
     
     <title>Landing page | PSI</title>
 </head>
@@ -32,36 +32,48 @@
 
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-<div class="container">        
-    <a class="navbar-brand" href="#">
-        <img src="../img/ASOCIACION-PSI-Logos-2.png" alt="Logo" height="80" class="d-inline-block align-text-top">
-    </a>
-
-
-                  
-    <input type="checkbox" id="checkbox" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="d-lg-none">
-    <label for="checkbox" class="toggle d-lg-none">
-        <div class="bars" id="bar1"></div>
-        <div class="bars" id="bar2"></div>
-        <div class="bars" id="bar3"></div>
-    </label>
-    <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./cursos.html">Cursos y Especializaciones</a>
-            </li>
-        </ul>
-
+<header class="bg-white sticky-top ">
+    <div class="carousel slide bg-white" data-bs-ride="carousel">
+        <!-- CARROUSEL -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <p>Comprando 1 Curso Online y 1 Curso OnDemand recibí un 20% OFF en Ambos cursos!</p>
+            </div>
+            <div class="carousel-item">
+                <p>3 Cuotas sin interes con VISA, MASTERCARD y CABAL</p>
+            </div>
+        </div>            
     </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
+        <div class="container-fluid">        
+            <a class="navbar-brand" href="#">
+                <img src="../img/ASOCIACION-PSI-Logos-2.png" alt="Logo" height="80" class="d-inline-block align-text-top">
+            </a>                     
+            <input type="checkbox" id="checkbox" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="d-lg-none">
+            <label for="checkbox" class="toggle d-lg-none">
+                <div class="bars" id="bar1"></div>
+                <div class="bars" id="bar2"></div>
+                <div class="bars" id="bar3"></div>
+            </label>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./cursos.html">Cursos y Especializaciones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-</div>
-</nav>
+</header>
 
     <!-- MAIN -->
    
-<main class="container my-5">
+<main>
+    <div class="img-banner"></div>
+</main>
+<section class="container my-5">   
     <div class="row">
         <div class="col-lg-8">
             <h1 class="mb-4">Formulario de Inscripción</h1>
@@ -123,7 +135,7 @@
             </form>
         </div>
         <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm position-sticky" style="top: 150px;">
                 <div class="card-body">
                     <h2 class="card-title h5 mb-4">Resumen del Carrito</h2>
                     <ul class="list-group list-group-flush mb-3" id="resumenCarrito">
@@ -142,7 +154,7 @@
                         <!-- El total y el descuento se mostrarán aquí -->
                     </div>
                     <div class="d-flex justify-content-between align-items-center pt-3">
-                        <a type="button" href="./pago.php" class="btn btn-primary w-100" form="inscripcionForm">Pagar!</a>
+                        <a type="button" href="./pago.php" class="btn btn-primary w-100 disabled" form="inscripcionForm">Pagar!</a>
                         <button type="button"  class="btn btn-outline-primary w-100">Cancelar</button>
                     </div>
                 </div>
@@ -151,7 +163,7 @@
 
         </div>
     </div>
-</main>
+</section> 
 
    
         
