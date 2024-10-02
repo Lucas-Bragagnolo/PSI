@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // Función para obtener el valor de un parámetro en la URL
 const obtenerParametroURL = (parametro) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -153,8 +154,7 @@ const mostrarDetalleCurso = (curso) => {
                                     <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Soporte técnico</li>
                                     <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Certificado de finalización</li>
                                 </ul>
-                                <a href="./inscripcion.html" class="btn btn-primary btn-lg mb-3">Inscribirse</a>
-                                <button class="btn btn-outline-primary btn-lg mb-3" id="btnAgregarCarrito" onclick="agregarAlCarrito(${curso.idcur})">
+                                <a href="#" onclick="agregarAlCarritoYRedirigir(${curso.idcur})" class="btn btn-primary btn-lg mb-3">Inscribirse</a>                                <button class="btn btn-outline-primary btn-lg mb-3" id="btnAgregarCarrito" onclick="agregarAlCarrito(${curso.idcur})">
                                     <i class="fa-solid fa-plus me-3"></i> al carrito
                                 </button>                        
                             </div>

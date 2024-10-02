@@ -1,3 +1,46 @@
+
+
+// Función para obtener los países desde la API
+function obtenerPaises() {
+  fetch('https://psi.planbsistemas.com.ar/api_psi.php?accion=paises')
+    .then(response => response.json())
+    .then(data => {
+      llenarSelectPaises(data);
+    })
+    .catch(error => {
+      console.error('Error al obtener los países:', error);
+    });
+}
+
+// Función para llenar el select de países
+function llenarSelectPaises(paises) {
+  const selectPaises = document.getElementById('pais');
+  
+  if (!selectPaises) {
+    console.error('No se encontró el elemento select de países');
+    return;
+  }
+
+  // Ordenar los países alfabéticamente por nombre
+
+
+  // Limpiar las opciones existentes
+  selectPaises.innerHTML = '<option value="">Seleccione un país</option>';
+
+  // Agregar las nuevas opciones
+  paises.forEach(pais => {
+    const option = document.createElement('option');
+    option.value = pais.codigo;
+    option.textContent = pais.nombre;
+    selectPaises.appendChild(option);
+  });
+}
+
+// Llamar a la función para obtener los países cuando se cargue la página
+document.addEventListener('DOMContentLoaded', obtenerPaises);
+
+
+
 function mostrarResumenCarrito() {
     const resumenCarrito = document.getElementById('resumenCarrito');
     const totalResumen = document.getElementById('resumenTotal');
@@ -50,10 +93,13 @@ function mostrarResumenCarrito() {
 
     if(carrito.length === 1) {
       promocionCard.classList.remove('d-none');
+      const imgBanner = document.getElementById('img-banner');
+      imgBanner.classList.remove('d-none');
     }
   
     if (descuento > 0) {
       const descuentoLi = document.createElement('li');
+
       descuentoLi.className = 'list-group-item d-flex justify-content-between align-items-center';
       descuentoLi.innerHTML = `
         Promocion 20% OFF
@@ -65,7 +111,36 @@ function mostrarResumenCarrito() {
 
   }
 
+mostrarResumenCarrito();
+
+function guardarDatosAlumno() {
+  const nombre = document.getElementById('nombre').value;
+  const apellido = document.getElementById('apellido').value;
+  const email = document.getElementById('email').value;
+  const telefono = document.getElementById('telefono').value;
+  const pais = document.getElementById('pais').value;
+  const documento = document.getElementById('documento').value;
+
+  const nuevoAlumno = {
+      nombre,
+      apellido,
+      email,
+      telefono,
+      pais,
+      documento
+  };
+
+  sessionStorage.setItem('nuevoAlumno', JSON.stringify(nuevoAlumno));
+}
+// Función para actualizar el carrito
+function actualizarCarrito(nuevoCarrito) {
+  carrito = nuevoCarrito;
   mostrarResumenCarrito();
+}
+
+// Ejemplo de uso:
+// Cuando se modifique el carrito en cualquier parte del código, llamar a:
+// actualizarCarrito(nuevoEstadoDelCarrito);
 
 
 // Función para validar el formulario
@@ -85,6 +160,30 @@ document.addEventListener('DOMContentLoaded', function () {
           if (todosLosCamposValidos()) {
               botonPagar.classList.remove('disabled');
               botonPagar.removeAttribute('disabled');
+              guardarDatosAlumno();
+
+              
+                            // Obtener los parámetros necesarios
+              const pais = document.getElementById('pais').value; // Asegúrate de tener un elemento con id 'param1'
+              const importe = JSON.parse(sessionStorage.getItem('carritoTotal'));
+  
+                // Llamar a la API y actualizar el href del botón
+                fetch(`https://psi.planbsistemas.com.ar/api_psi.php?accion=dlocal&importe=${importe}&pais=${pais}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const nuevaURL = data.url; // Asume que la API devuelve un objeto con una propiedad 'url'
+                        botonPagar.href = nuevaURL;
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener la URL de pago:', error);
+                    });
+              
+
+
+
+
+
+
           } else {
               botonPagar.classList.add('disabled');
               botonPagar.setAttribute('disabled', true);
@@ -103,5 +202,5 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
-          
-          
+
+

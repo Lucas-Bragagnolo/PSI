@@ -11,6 +11,7 @@ function cargarCarrito() {
 // Función para guardar el carrito en sessionStorage
 function guardarCarrito() {
   sessionStorage.setItem('carrito', JSON.stringify(carrito));
+  
 }
 // Función para agregar productos al carrito
 function agregarAlCarrito(cursoID) {
@@ -55,6 +56,13 @@ function agregarAlCarrito(cursoID) {
   }
 }
 
+function agregarAlCarritoYRedirigir(idCurso) {
+  agregarAlCarrito(idCurso);  // Ejecuta la función para agregar el curso al carrito
+
+  // Redirige a la página de inscripción después de agregar al carrito
+  window.location.href = './inscripcion.html';
+}
+
 // Función para eliminar productos del carrito
 function eliminarDelCarrito(cursoID) {
   const indice = carrito.findIndex(curso => curso.idcur === cursoID);
@@ -77,7 +85,8 @@ function eliminarDelCarrito(cursoID) {
       },
       onClick: function(){}
     }).showToast();  
-    console.log(carrito);
+    //console.log(carrito);
+    //mostrarResumenCarrito();
   }
 
 // Función para renderizar el carrito
@@ -136,7 +145,7 @@ function mostrarCarrito() {
   console.log('Estado final de promo20Card:', promo20Card.classList.contains('d-none') ? 'oculto' : 'visible');
 
   mostrarTotalCarrito();
- // mostrarResumenCarrito();
+  //mostrarResumenCarrito();
 }
 
 // Función para mostrar el total del carrito
@@ -169,6 +178,9 @@ function mostrarTotalCarrito() {
     </div>
   `;
 
+  // Guardar el total en el sessionStorage
+  sessionStorage.setItem('carritoTotal', total.toFixed(2));
+
   function calcularDescuento(subtotal) {
     const cursoModalidad1 = carrito.some(curso => curso.modalidad == 1);
     const cursoModalidad2 = carrito.some(curso => curso.modalidad == 2);  
@@ -180,9 +192,7 @@ function mostrarTotalCarrito() {
         return 0;
     }
   }
-
 }
-
 
 
 

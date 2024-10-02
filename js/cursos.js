@@ -64,7 +64,7 @@ function actualizarPrecioMin() {
 // Función para actualizar el valor máximo del precio
 function actualizarPrecioMax() {
   const precioMax = document.getElementById('precioMax').value;
-  document.getElementById('precioMaxValor').textContent = precioMax;
+  document.getElementById('precioMax').textContent = precioMax;
   aplicarFiltros();
 }
 
