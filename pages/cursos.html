@@ -109,6 +109,18 @@
                                     </div>
                                   </div>
                                 <hr>
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de curso</label>
+                                    <div class="btn-group w-100" role="group" aria-label="Tipo de curso toggle">
+                                      <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoTodos" value="0" autocomplete="off" checked onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="tipoCursoTodos">Todos</label>
+                                      <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoCursos" value="1" autocomplete="off" onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="tipoCursoCursos">Cursos</label>
+                                      <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoEspecializacion" value="2" autocomplete="off" onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="tipoCursoEspecializacion">Especialización</label>
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="mb-3 mt-2">
                                     <div id="filtroPrecio">
                                         <label for="precioMin">Precio mínimo: $<span id="precioMinValor">0</span></label><br>
@@ -121,17 +133,7 @@
                                 
 
                                 <hr>
-                                  <div class="mb-3">
-                                      <label class="form-label">Tipo de curso</label>
-                                      <div class="btn-group w-100" role="group" aria-label="Tipo de curso toggle">
-                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoTodos" value="0" autocomplete="off" checked onclick="aplicarFiltros()">
-                                        <label class="btn btn-outline-primary p-1" for="tipoCursoTodos">Todos</label>
-                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoCursos" value="1" autocomplete="off" onclick="aplicarFiltros()">
-                                        <label class="btn btn-outline-primary p-1" for="tipoCursoCursos">Cursos</label>
-                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoEspecializacion" value="2" autocomplete="off" onclick="aplicarFiltros()">
-                                        <label class="btn btn-outline-primary p-1" for="tipoCursoEspecializacion">Especialización</label>
-                                      </div>
-                                  </div>
+
                             </form>
                         </div>
                     </div>
@@ -160,8 +162,14 @@
         </div>
         <div class="offcanvas-body">        
             <div class="carrito" id="carrito">
-            <div id="carritoItems"></div>
+                <div id="carritoItems"></div>
             </div>
+            <div id="promoCard" class="card mt-3 d-none">
+                <div class="card-body">
+                  <h5 class="card-title">¡Oferta Especial!</h5>
+                  <p class="card-text">Si eliges un curso OnDemand más, obtienes un 20% de descuento en ambos.</p>
+                </div>
+              </div>
         </div>
         <div class="offcanvas-footer p-3">
             <div class="mt-3" id="total-carrito"></div>
@@ -230,7 +238,7 @@
     <script src="../js/datosCursos.js"></script>
     <script src="../js/datosAreas.js"></script>
     <script src="../js/cursos.js"></script>
-    <script src="../js/carrito.js"></script>
+    <script src="../js/carrito.js?"></script>
 
 </body>
 </html>

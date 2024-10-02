@@ -83,38 +83,60 @@ function eliminarDelCarrito(cursoID) {
 // Función para renderizar el carrito
 function mostrarCarrito() {
   const contenedorCarrito = document.getElementById('carritoItems');
+  const promo20Card = document.getElementById('promoCard');
   contenedorCarrito.innerHTML = '';
-  carrito.forEach(({ imgportada, precio, fechainicioletras, idcur, nombre}) => {
+
+  carrito.forEach(({ imgportada, precio, fechainicioletras, idcur, nombre }) => {
     const item = document.createElement('div');
     item.className = 'card mb-3 position-relative';
     item.innerHTML = `
-        <div class="row g-0">
-            <div class="col-3 col-md-3 mt-3">
-                <img src="../img/${imgportada}" class="img-fluid rounded-start" alt="Imagen del curso">
-            </div>
-            <div class="col-7 col-md-7">
-                <div class="card-body">
-                    <h2 class="h6">${nombre}</h2>
-                    <p class="card-text mb-1">
-                        <span class="sr-only">Fecha de inicio:</span>
-                        <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicioletras}</small>
-                    </p>                            
-                    <p class="card-text mb-0">
-                        <span class="sr-only">Precio:</span>
-                        <strong aria-label="${precio} dólares">U$D ${precio}</strong>
-                    </p>
-                </div>
-            </div>
-            <div class="col-2 d-flex align-items-start justify-content-start">
-                <button type="button" class="btn borrar-curso" onclick="eliminarDelCarrito(${idcur})" aria-label="Eliminar curso">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
+      <div class="row g-0">
+        <div class="col-3 col-md-3 mt-3">
+          <img src="../img/${imgportada}" class="img-fluid rounded-start" alt="Imagen del curso">
         </div>
+        <div class="col-7 col-md-7">
+          <div class="card-body">
+            <h2 class="h6">${nombre}</h2>
+            <p class="card-text mb-1">
+              <span class="sr-only">Fecha de inicio:</span>
+              <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicioletras}</small>
+            </p>                            
+            <p class="card-text mb-0">
+              <span class="sr-only">Precio:</span>
+              <strong aria-label="${precio} dólares">U$D ${precio}</strong>
+            </p>
+          </div>
+        </div>
+        <div class="col-2 d-flex align-items-start justify-content-start">
+          <button type="button" class="btn borrar-curso" onclick="eliminarDelCarrito(${idcur})" aria-label="Eliminar curso">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
     `;
-      contenedorCarrito.appendChild(item);
+    contenedorCarrito.appendChild(item);
   });
+
+  // Mostrar u ocultar la tarjeta de promoción
+  if (carrito.length === 1) {
+    const cursoModalidadOndemand = carrito.some(curso => curso.modalidad == '1');
+    console.log('Carrito length:', carrito.length);
+    console.log('Curso modalidad ondemand:', cursoModalidadOndemand);
+    if (!cursoModalidadOndemand) {
+      console.log('Mostrando promo20Card');
+      promo20Card.classList.remove('d-none');
+    } else {
+      console.log('Ocultando promo20Card (curso ondemand)');
+      promo20Card.classList.add('d-none');
+    }
+  } else {
+    console.log('Ocultando promo20Card (carrito.length !== 1)');
+    promo20Card.classList.add('d-none');
+  }
+  console.log('Estado final de promo20Card:', promo20Card.classList.contains('d-none') ? 'oculto' : 'visible');
+
   mostrarTotalCarrito();
+ // mostrarResumenCarrito();
 }
 
 // Función para mostrar el total del carrito
@@ -145,50 +167,7 @@ function mostrarTotalCarrito() {
 }
 
 
-// Función para mostrar el resumen del carrito
-function mostrarResumenCarrito() {
-  const resumenCarrito = document.getElementById('resumenCarrito');
-  const totalResumen = document.getElementById('resumenTotal');
-  
-  if (!resumenCarrito || !totalResumen) {
-    console.error('No se encontraron los elementos necesarios para mostrar el resumen del carrito');
-    return;
-  }
 
-  const subtotal = carrito.reduce((acc, { precio }) => acc + parseFloat(precio), 0);
-  const descuento = calcularDescuento(subtotal);
-  const total = subtotal - descuento;
-
-  totalResumen.innerHTML = `
-    <p class="card-text h4 mb-4 precio-card">U$D ${total.toFixed(2)}</p>
-  `;
-  resumenCarrito.innerHTML = '';  
-
-  if (carrito.length === 0) {
-    resumenCarrito.innerHTML = '<li class="list-group-item">El carrito está vacío</li>';
-    return;
-  }
-
-  carrito.forEach(({ nombre, precio }) => {
-    const li = document.createElement('li');
-    li.className = 'list-group-item d-flex justify-content-between align-items-center';
-    li.innerHTML = `
-      ${nombre}
-      <span class="badge bg-primary rounded-pill">U$D ${parseFloat(precio).toFixed(2)}</span>
-    `;
-    resumenCarrito.appendChild(li);
-  });
-
-  if (descuento > 0) {
-    const descuentoLi = document.createElement('li');
-    descuentoLi.className = 'list-group-item d-flex justify-content-between align-items-center';
-    descuentoLi.innerHTML = `
-      Descuento
-      <span class="badge bg-danger rounded-pill">- U$D ${descuento.toFixed(2)}</span>
-    `;
-    resumenCarrito.appendChild(descuentoLi);
-  }
-}
 
 function calcularDescuento(subtotal) {
   const cursoModalidad1 = carrito.some(curso => curso.modalidad == 1);
@@ -201,46 +180,6 @@ function calcularDescuento(subtotal) {
   }
 }
 // Modificar la función mostrarCarrito para incluir el resumen
-function mostrarCarrito() {
-  const contenedorCarrito = document.getElementById('carritoItems');
-  contenedorCarrito.innerHTML = '';
-  carrito.forEach(({ imgportada, precio, fechainicioletras, idcur, nombre}) => {
-    const item = document.createElement('div');
-    item.className = 'card mb-3 position-relative';
-    item.innerHTML = `
-        <div class="row g-0">
-            <div class="col-3 col-md-3 mt-3">
-                <img src="../img/${imgportada}" class="img-fluid rounded-start" alt="Imagen del curso">
-            </div>
-            <div class="col-7 col-md-7">
-                <div class="card-body">
-                    <h2 class="h6">${nombre}</h2>
-                    <p class="card-text mb-1">
-                        <span class="sr-only">Fecha de inicio:</span>
-                        <small><i class="fas fa-calendar me-2" aria-hidden="true"></i>${fechainicioletras}</small>
-                    </p>                            
-                    <p class="card-text mb-0">
-                        <span class="sr-only">Precio:</span>
-                        <strong aria-label="${precio} dólares">U$D ${precio}</strong>
-                    </p>
-                </div>
-            </div>
-            <div class="col-2 d-flex align-items-start justify-content-start">
-                <button type="button" class="btn borrar-curso" onclick="eliminarDelCarrito(${idcur})" aria-label="Eliminar curso">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-    `;
-    contenedorCarrito.appendChild(item);
-  });
-  mostrarTotalCarrito();
-  mostrarResumenCarrito();
-}
-
-
-
-
 
 
 // Función para actualizar el badge del carrito

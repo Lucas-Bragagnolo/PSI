@@ -1,25 +1,25 @@
 // Función para generar los botones de radio de categorías
 function generarRadiosAreas() {
-const contenedorRadios = document.getElementById('filtroAreaRadios');
-contenedorRadios.innerHTML = '';
+  const contenedorRadios = document.getElementById('filtroAreaRadios');
+  contenedorRadios.innerHTML = '';
 
-// Opción para "Todas" las áreas
-const radioTodas = document.createElement('div');
-radioTodas.innerHTML = `
+  // Opción para "Todas" las áreas
+  const radioTodas = document.createElement('div');
+  radioTodas.innerHTML = `
     <input type="radio" id="areaTodas" name="area" value="" checked onchange="aplicarFiltros()" />
     <label for="areaTodas">Todas</label>
-`;
-contenedorRadios.appendChild(radioTodas);
+  `;
+  contenedorRadios.appendChild(radioTodas);
 
-// Crear un botón de radio por cada área cargada
-areas.forEach(({ id, descripcion}) => {
-  const radio = document.createElement('div');
-  radio.innerHTML = `
+  // Crear un botón de radio por cada área cargada
+  areas.forEach(({ id, descripcion}) => {
+    const radio = document.createElement('div');
+    radio.innerHTML = `
       <input type="radio" id="area${id}" class="mb-2" name="area" value="${id}" onchange="aplicarFiltros()" />
       <label for="area${id}">${descripcion}</label>
-  `;
-  contenedorRadios.appendChild(radio);
-});
+    `;
+    contenedorRadios.appendChild(radio);
+  });
 }
 
 // Agregar event listener para el filtro de nombre
@@ -33,6 +33,15 @@ function aplicarFiltros() {
   const filtroNombre = document.getElementById('filtroNombre').value.toLowerCase();
   const filtroTipoCurso = document.querySelector('input[name="tipoCurso"]:checked').value;
   const filtroModalidad = document.querySelector('input[name="modalidad"]:checked').value;
+
+  // Guardar los filtros en sessionStorage
+  sessionStorage.setItem('filtroAreaId', filtroAreaId);
+  sessionStorage.setItem('filtroPrecioMin', filtroPrecioMin);
+  sessionStorage.setItem('filtroPrecioMax', filtroPrecioMax);
+  sessionStorage.setItem('filtroNombre', filtroNombre);
+  sessionStorage.setItem('filtroTipoCurso', filtroTipoCurso);
+  sessionStorage.setItem('filtroModalidad', filtroModalidad);
+
   const cursosFiltrados = cursos.filter(curso => {
     const coincideArea = filtroAreaId === '' || curso.area == filtroAreaId;
     const coincidePrecio = curso.precio >= filtroPrecioMin && curso.precio <= filtroPrecioMax;
@@ -44,7 +53,6 @@ function aplicarFiltros() {
   });
   mostrarCursos(cursosFiltrados);
 }
-
 
 // Función para actualizar el valor mínimo del precio
 function actualizarPrecioMin() {
@@ -70,11 +78,8 @@ function filtrarPorModalidad(modalidad) {
     return coincideModalidad;
   });
   
-  //console.log('Cursos filtrados por modalidad:', cursosFiltrados);
   mostrarCursos(cursosFiltrados);
-  //console.log('Finalizado filtrarPorModalidad');
 }
-
 
 // Función para mostrar los Cursos filtrados
 function mostrarCursos(cursosFiltrados) {
@@ -119,5 +124,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   await cargarAreas(); // Cargar categorías de forma asíncrona  
   // Generar radios de categorías y mostrar todos los Cursos
   generarRadiosAreas();
-  mostrarCursos(cursos); // Mostrar todos los Cursos inicialmente
+  
+  // Recuperar los filtros del sessionStorage
+  const filtroAreaId = sessionStorage.getItem('filtroAreaId') || '';
+  const filtroPrecioMin = sessionStorage.getItem('filtroPrecioMin') || 0;
+  const filtroPrecioMax = sessionStorage.getItem('filtroPrecioMax') || Infinity;
+  const filtroNombre = sessionStorage.getItem('filtroNombre') || '';
+  const filtroTipoCurso = sessionStorage.getItem('filtroTipoCurso') || '0';
+  const filtroModalidad = sessionStorage.getItem('filtroModalidad') || '0';
+
+  // Aplicar los filtros recuperados
+  document.querySelector(`input[name="area"][value="${filtroAreaId}"]`).checked = true;
+  document.getElementById('precioMin').value = filtroPrecioMin;
+  document.getElementById('precioMax').value = filtroPrecioMax;
+  document.getElementById('filtroNombre').value = filtroNombre;
+  document.querySelector(`input[name="tipoCurso"][value="${filtroTipoCurso}"]`).checked = true;
+  document.querySelector(`input[name="modalidad"][value="${filtroModalidad}"]`).checked = true;
+
+  // Aplicar los filtros
+  aplicarFiltros();
 });
