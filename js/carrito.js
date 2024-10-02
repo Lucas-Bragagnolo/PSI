@@ -147,9 +147,26 @@ function mostrarTotalCarrito() {
   
   const total = subtotal - descuento;
   totalElement.innerHTML = `
-    <h4>Subtotal: U$D ${subtotal.toFixed(2)}</h4>
-    <h4>Descuento: U$D ${descuento.toFixed(2)}</h4>
-    <h4>Total: U$D ${total.toFixed(2)}</h4>
+    <div class="cart-summary" aria-live="polite">
+      <p class="subtotal">
+        <span class="label">Subtotal:</span>
+        <span class="amount ${descuento > 0 ? 'discounted' : ''}">
+          ${descuento > 0 ? '<span class="original-price">' : ''}
+          U$D ${subtotal.toFixed(2)}
+          ${descuento > 0 ? '</span>' : ''}
+        </span>
+      </p>
+      ${descuento > 0 ? `
+        <p class="discount">
+          <span class="label">Descuento (Promo 20% OFF):</span>
+          <span class="amount">-U$D ${descuento.toFixed(2)}</span>
+        </p>
+      ` : ''}
+      <p class="total">
+        <strong class="label">Total:</strong>
+        <strong class="amount">U$D ${total.toFixed(2)}</strong>
+      </p>
+    </div>
   `;
 
   function calcularDescuento(subtotal) {

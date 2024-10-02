@@ -138,27 +138,21 @@
                     </div>
                                     
                     
-                    <div class="d-flex justify-content-end align-items-center border-top pt-3" id="resumenTotal">
+                    <div class="d-flex justify-content-end align-items-center pt-3" id="resumenTotal">
                         <!-- El total y el descuento se mostrarán aquí -->
                     </div>
+                    <div class="d-flex justify-content-between align-items-center pt-3">
+                        <a type="button" href="./pago.php" class="btn btn-primary w-100" form="inscripcionForm">Pagar!</a>
+                        <button type="button"  class="btn btn-outline-primary w-100">Cancelar</button>
+                    </div>
                 </div>
+
             </div>
-            <div class="d-grid gap-2 mt-3">
-                <button type="submit" class="btn btn-primary btn-lg" form="inscripcionForm">Proceder al Pago</button>
-                <button type="button" class="btn btn-outline-secondary">Cancelar</button>
-            </div>
+
         </div>
     </div>
 </main>
-<script>
-    document.getElementById('inscripcionForm').addEventListener('submit', function(event) {
-        if (!this.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        this.classList.add('was-validated');
-    }, false);
-</script>
+
    
         
 
@@ -173,12 +167,18 @@
     </div>
     <div class="offcanvas-body">        
         <div class="carrito" id="carrito">
-          <div id="carritoItems"></div>
+            <div id="carritoItems"></div>
         </div>
-      </div>
+        <div id="promoCard" class="card mt-3 d-none">
+            <div class="card-body">
+              <h5 class="card-title">¡Oferta Especial!</h5>
+              <p class="card-text">Si eliges un curso OnDemand más, obtienes un 20% de descuento en ambos.</p>
+            </div>
+          </div>
+    </div>
     <div class="offcanvas-footer p-3">
         <div class="mt-3" id="total-carrito"></div>
-        <button class="btn btn-primary" type="button">Proceder al pago</button>
+        <a class="btn btn-primary" href="./inscripcion.html"  type="button">Proceder al pago</a>
         <button onclick="limpiarCarrito()" class="btn btn-secondary" role="button">Limpiar Carrito</button>
     </div>
         
@@ -248,6 +248,7 @@
     </script>
 
     <script src="../js/carrito.js"></script>
+    <script src="../js/inscripcion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
