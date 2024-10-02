@@ -81,10 +81,10 @@
             <div class="col-lg-3 mb-4">
                 <div class="card shadow-sm position-sticky" style="top: 150px;">
                     <div class="card-body">
-                        <h3 class="h5 mb-3 d-lg-block ">Filtros</h3>
+                        <h3 class="h5 mb-3 d-lg-block ">Encontrá tu próximo curso</h3>
                         
                         <div class="d-flex">
-                            <input type="text" class="form-control me-2" id="buscar-curso" placeholder="Buscar curso">
+                            <input type="text" class="form-control me-2" id="filtroNombre" placeholder="Buscar curso">
                             <button class="btn btn-primary d-lg-none w-auto" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosCollapse" aria-expanded="false" aria-controls="filtrosCollapse">
                                 <i class="fa-solid fa-sliders"></i>
                             </button>
@@ -92,39 +92,46 @@
                                                                     
                         <div class="collapse d-lg-block" id="filtrosCollapse">
                             <form id="filtros-form">
-                                <div class="mb-3">
-                                    <label for="area" class="form-label">Área</label>
-                                    <select class="form-select" id="area" aria-label="Seleccionar área">
-                                        <option selected>Todas las áreas</option>
-                                        <option value="1">Psicología Clínica</option>
-                                        <option value="2">Psicología Educativa</option>
-                                        <option value="3">Psicología Organizacional</option>
-                                    </select>
+                                <label class="form-label">Area</label>
+                                <div id="filtroAreaRadios">
+                                    <!-- Aquí se insertarán los botones de radio dinámicamente -->
                                 </div>
-                                <div class="mb-3">
-                                    <label for="precio" class="form-label">Rango de precio</label>
-                                    <div class="d-flex justify-content-between">
-                                        <input type="number" class="form-control me-2" id="precio-min" placeholder="Mín">
-                                        <input type="number" class="form-control" id="precio-max" placeholder="Máx">
-                                    </div>
-                                </div>
+                                <hr>
                                 <div class="mb-3">
                                     <label class="form-label">Modalidad</label>
                                     <div class="btn-group w-100" role="group" aria-label="Modalidad toggle">
-                                        <input type="radio" class="btn-check" name="modalidad" id="modalidadOnDemand" autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="modalidadOnDemand">OnDemand</label>
-                                        <input type="radio" class="btn-check" name="modalidad" id="modalidadOnlineEnVivo" autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="modalidadOnlineEnVivo">en Vivo</label>
+                                      <input type="radio" class="btn-check" name="modalidad" id="modalidadTodos" value="0" autocomplete="off" checked onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="modalidadTodos">Todos</label>
+                                      <input type="radio" class="btn-check" name="modalidad" id="modalidadOnDemand" value="1" autocomplete="off" onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="modalidadOnDemand">OnDemand</label>
+                                      <input type="radio" class="btn-check" name="modalidad" id="modalidadOnline" value="2" autocomplete="off" onclick="aplicarFiltros()">
+                                      <label class="btn btn-outline-primary p-1" for="modalidadOnline">Online</label>
+                                    </div>
+                                  </div>
+                                <hr>
+                                <div class="mb-3 mt-2">
+                                    <div id="filtroPrecio">
+                                        <label for="precioMin">Precio mínimo: $<span id="precioMinValor">0</span></label><br>
+                                        <input type="range" id="precioMin" name="precioMin" min="0" max="200" step="10" value="0" oninput="actualizarPrecioMin()">
+                                    
+                                        <label for="precioMax">Precio máximo: $<span id="precioMaxValor">200</span></label><br>
+                                        <input type="range" id="precioMax" name="precioMax" min="0" max="200" step="10" value="200" oninput="actualizarPrecioMax()">
                                     </div>
                                 </div>
-                                <div>
-                                    <label for="tipo-curso" class="form-label">Tipo de curso</label>
-                                    <select class="form-select" id="tipo-curso" aria-label="Seleccionar tipo de curso">
-                                        <option selected>Todos los tipos</option>
-                                        <option value="1">Cursos</option>
-                                        <option value="2">Especialización</option>
-                                    </select>
-                                </div>
+                                
+
+                                <hr>
+                                  <div class="mb-3">
+                                      <label class="form-label">Tipo de curso</label>
+                                      <div class="btn-group w-100" role="group" aria-label="Tipo de curso toggle">
+                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoTodos" value="0" autocomplete="off" checked onclick="aplicarFiltros()">
+                                        <label class="btn btn-outline-primary p-1" for="tipoCursoTodos">Todos</label>
+                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoCursos" value="1" autocomplete="off" onclick="aplicarFiltros()">
+                                        <label class="btn btn-outline-primary p-1" for="tipoCursoCursos">Cursos</label>
+                                        <input type="radio" class="btn-check" name="tipoCurso" id="tipoCursoEspecializacion" value="2" autocomplete="off" onclick="aplicarFiltros()">
+                                        <label class="btn btn-outline-primary p-1" for="tipoCursoEspecializacion">Especialización</label>
+                                      </div>
+                                  </div>
                             </form>
                         </div>
                     </div>
@@ -220,7 +227,7 @@
     <script>
         AOS.init();
     </script>
-    <script src="../js/datosCursos.js?4.1"></script>
+    <script src="../js/datosCursos.js"></script>
     <script src="../js/datosAreas.js"></script>
     <script src="../js/cursos.js"></script>
     <script src="../js/carrito.js"></script>

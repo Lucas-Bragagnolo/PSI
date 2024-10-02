@@ -133,7 +133,7 @@ function mostrarTotalCarrito() {
   function calcularDescuento(subtotal) {
     const cursoModalidad1 = carrito.some(curso => curso.modalidad == 1);
     const cursoModalidad2 = carrito.some(curso => curso.modalidad == 2);  
-    console.log("asdasd", cursoModalidad1, cursoModalidad2);
+    //console.log("asdasd", cursoModalidad1, cursoModalidad2);
       
     if (cursoModalidad1 && cursoModalidad2) {
         return subtotal * 0.2;

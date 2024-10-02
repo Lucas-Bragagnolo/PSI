@@ -1,3 +1,6 @@
+
+renderizarCursos();
+
 // Función para obtener el valor de un parámetro en la URL
 const obtenerParametroURL = (parametro) => {
     const urlParams = new URLSearchParams(window.location.search);

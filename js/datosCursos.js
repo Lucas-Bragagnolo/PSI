@@ -106,7 +106,7 @@ const renderizarTienda = async () => {
           modalidadLetra = 'Presencial';
       }
       const cursoHTML = `
-          <div class="col">
+          <div class="col curso">
           <a href="./detalle_curso.html?planID=${curso.idPlan}" class="text-decoration-none">
               <div class="card h-100 shadow-sm">
                   <img src="../img/${curso.imgportada}" class="card-img-top" alt="${curso.titulo}">
@@ -124,9 +124,9 @@ const renderizarTienda = async () => {
       `;
       cursosContainer.innerHTML += cursoHTML;
   });
-  console.log('Renderizando tienda:', cursosData);
+  //console.log('Renderizando tienda:', cursosData);
 };
 
 // Llamar a las funciones por separado
-renderizarCursos();
-renderizarTienda();
+//renderizarCursos();
+//renderizarTienda();
