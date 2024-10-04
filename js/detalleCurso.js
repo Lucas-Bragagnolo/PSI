@@ -5,10 +5,10 @@ renderizarCursos();
 document.addEventListener('DOMContentLoaded', () => {
     Swal.fire({
         title: '¡Oferta Especial!',
-        text: 'Compra 1 Curso Ondemand y 1 Curso Presencial y obtén un 20% de descuento en ambos cursos.',
+        
         imageUrl: '../img/banner-mobile-promo.png',
         imageWidth: 400,
-        imageHeight: 400,
+        imageHeight: 500,
         imageAlt: 'Imagen de bienvenida',
         confirmButtonText: 'Entendido'
     });
