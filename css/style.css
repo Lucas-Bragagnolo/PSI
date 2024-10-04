@@ -750,7 +750,7 @@ p {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    background-image: url(../img/banner-desktop.jpg);
+    background-image: url(../img/banner-desktop-promo.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -758,7 +758,7 @@ p {
 
 @media (max-width: 768px) {
     .img-banner {
-        background-image: url(../img/banner-mobile.jpg);
+        background-image: url(../img/banner-mobile-promo.png);
         height: 60vh;
     }
 }

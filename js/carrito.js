@@ -19,25 +19,41 @@ function agregarAlCarrito(cursoID) {
   if (cursoEncontrado) {
     const cursoExistente = carrito.find(curso => curso.idcur == cursoID);
     if (!cursoExistente) {
-      carrito.push(cursoEncontrado);
-      console.log(carrito);
-      Toastify({
-        text: "Agregaste un Curso al carrito",
-        duration: 2000,
-        newWindow: true,
-        close: true,
-        gravity: "top",
-        position: "center",
-        stopOnFocus: true,
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-        onClick: function(){}
-      }).showToast();
-      
-      guardarCarrito();
-      mostrarCarrito();  
-      actualizarBadgeCarrito();
+      if (carrito.length < 2 && !carrito.some(curso => curso.modalidad === cursoEncontrado.modalidad)) {
+        carrito.push(cursoEncontrado);
+        console.log(carrito);
+        Toastify({
+          text: "Agregaste un Curso al carrito",
+          duration: 2000,
+          newWindow: true,
+          close: true,
+          gravity: "top",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+          onClick: function(){}
+        }).showToast();
+        
+        guardarCarrito();
+        mostrarCarrito();  
+        actualizarBadgeCarrito();
+      } else {
+        Toastify({
+          text: "No puedes agregar más cursos o ya tienes un curso de esta modalidad",
+          duration: 2000,
+          newWindow: true,
+          close: true,
+          gravity: "top",
+          position: "center",
+          stopOnFocus: true,
+          style: {
+            background: "linear-gradient(to right, #ff6b6b, #ff8e8e)",
+          },
+          onClick: function(){}
+        }).showToast();
+      }
     } else {
       Toastify({
         text: "Este curso ya está en el carrito",
@@ -55,7 +71,6 @@ function agregarAlCarrito(cursoID) {
     }
   }
 }
-
 function agregarAlCarritoYRedirigir(idCurso) {
   agregarAlCarrito(idCurso);  // Ejecuta la función para agregar el curso al carrito
 
@@ -128,24 +143,11 @@ function mostrarCarrito() {
 
   // Mostrar u ocultar la tarjeta de promoción
   if (carrito.length === 1) {
-    const cursoModalidadOndemand = carrito.some(curso => curso.modalidad == '1');
-    console.log('Carrito length:', carrito.length);
-    console.log('Curso modalidad ondemand:', cursoModalidadOndemand);
-    if (!cursoModalidadOndemand) {
-      console.log('Mostrando promo20Card');
-      promo20Card.classList.remove('d-none');
-    } else {
-      console.log('Ocultando promo20Card (curso ondemand)');
-      promo20Card.classList.add('d-none');
-    }
+    promo20Card.classList.remove('d-none');
   } else {
-    console.log('Ocultando promo20Card (carrito.length !== 1)');
     promo20Card.classList.add('d-none');
   }
-  console.log('Estado final de promo20Card:', promo20Card.classList.contains('d-none') ? 'oculto' : 'visible');
-
   mostrarTotalCarrito();
-  //mostrarResumenCarrito();
 }
 
 // Función para mostrar el total del carrito

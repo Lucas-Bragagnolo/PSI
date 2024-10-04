@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Swal.fire({
         title: '¡Oferta Especial!',
         text: 'Compra 1 Curso Ondemand y 1 Curso Presencial y obtén un 20% de descuento en ambos cursos.',
-        imageUrl: '../img/curso1.png',
+        imageUrl: '../img/banner-mobile-promo.png',
         imageWidth: 400,
         imageHeight: 400,
         imageAlt: 'Imagen de bienvenida',
